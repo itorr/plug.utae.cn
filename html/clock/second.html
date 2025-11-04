@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>直播时钟</title>
+	<style>
+		html{
+			height: 100%;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			/* font-family: sans-serif; */
+			font-family: monospace;
+			line-height: 1;
+		}
+		body,
+		h2,h3{
+			margin: 0;
+		}
+		.clock{
+			text-align: center;
+
+		}
+		.clock h2{
+			font-size: 1.75em;
+		}
+		.clock h3{
+			font-weight: normal;
+			padding-bottom: 0.2em;
+			opacity: 0.5;
+		}
+	</style>
+</head>
+<body>
+	<div class="clock">
+		<h2></h2>
+		<h3></h3>
+	</div>
+	<script>
+		const h2 = document.querySelector('.clock h2');
+		const h3 = document.querySelector('.clock h3');
+		function updateClock() {
+			const now = new Date();
+			const options = { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false };
+			h2.textContent = now.toLocaleTimeString('zh-CN', options);
+			h3.textContent = now.toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' });
+		}
+		setInterval(updateClock, 1000);
+		updateClock();
+
+		const resize = () => {
+			const scale = Math.min(window.innerWidth / 270, window.innerHeight / 100);
+			document.body.style.fontSize = `${scale * 30}px`;
+		};
+		window.addEventListener('resize', resize);
+		resize();
+
+		let css = '';
+
+
+		// 根据请求参数设置字体颜色
+		const params = new URLSearchParams(window.location.search);
+		const color = params.get('color');
+		if (color) css += `html { color: ${color}; }`;
+		
+		const style = document.createElement('style');
+		style.textContent = css;
+		document.head.appendChild(style);
+	</script>
+</body>
+</html>
