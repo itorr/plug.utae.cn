@@ -10,5 +10,5 @@ https://plug.utae.cn/clock/second.html
 https://plug.utae.cn/clock/minute.html
 
 ### 白色背景
-https://plug.utae.cn/clock/second.html?color=%23FFF
-https://plug.utae.cn/clock/minute.html?color=%23FFF
+ - 秒钟白色 https://plug.utae.cn/clock/second.html?color=%23FFF
+ - 分钟白色 https://plug.utae.cn/clock/minute.html?color=%23FFF
