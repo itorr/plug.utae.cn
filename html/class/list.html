@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>阶级</title>
+<style>
+html{
+	font-size: sans-serif;
+}
+body{
+	margin: 0;
+}
+.class-list{
+	
+}
+.class-list ul{
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+.class-item{
+	margin: 0;
+	padding: .5em 0;
+}
+.class-item img{
+	width: 2em;
+	height: 2em;
+	margin-top: -0.2em;
+	display: inline-block;
+	vertical-align: middle;
+}
+.class-item[data-name="fans"] span:before{
+	content: "首卡灯牌送歌一首";
+}
+.class-item[data-name="box"] span:before{
+	content: "心动盲盒点歌一首";
+}
+.class-item[data-name="captain"] span:before{
+	content: "舰长点歌月卡 + 房管";
+}
+.class-item[data-name="supervisor"] span:before{
+	content: "提督以上 + 专属投稿 + 学歌";
+}
+</style>
+</head>
+<body>
+	<div class="class-list">
+		<ul>
+			<li class="class-item" data-name="fans">
+				<img src="img/fans.webp">
+				<span></span>
+			</li>
+			<li class="class-item" data-name="box">
+				<img src="img/box.webp">
+				<span></span>
+			</li>
+			<li class="class-item" data-name="captain">
+				<!-- <img src="img/cap.webp"> -->
+				<img src="img/captain.png">
+				<span></span>
+			</li>
+			<li class="class-item" data-name="supervisor">
+				<!-- <img src="img/sup.webp"> -->
+				<img src="img/supervisor.png">
+				<span></span>
+			</li>
+		</ul>
+	</div>
+<script>
+let css = '';
+// 根据请求参数设置字体颜色
+const params = new URLSearchParams(window.location.search);
+const color = params.get('color');
+if (color) css += `html { color: ${color}; }`;
+
+const style = document.createElement('style');
+style.textContent = css;
+document.head.appendChild(style);
+</script>
+</body>
+</html>
