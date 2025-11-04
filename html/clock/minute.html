@@ -26,7 +26,8 @@
 			font-size: 2.8em;
 		}
 		.clock h3{
-			font-weight: normal;
+			font-size: 1.33em;
+			/* font-weight: normal; */
 			padding-bottom: 0.15em;
 			opacity: 0.5;
 		}
@@ -44,7 +45,10 @@
 			const now = new Date();
 			const options = { hour: '2-digit', minute: '2-digit', hour12: false };
 			h2.textContent = now.toLocaleTimeString('zh-CN', options);
-			h3.textContent = now.toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' });
+			const yy = now.getFullYear();
+			const mm = String(now.getMonth() + 1).padStart(2, '0');
+			const dd = String(now.getDate()).padStart(2, '0');
+			h3.textContent = `${yy}-${mm.padStart(2, '0')}-${dd.padStart(2, '0')}`;
 		}
 		setInterval(updateClock, 1000*5);
 		updateClock();
